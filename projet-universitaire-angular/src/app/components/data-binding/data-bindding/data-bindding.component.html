@@ -1,0 +1,65 @@
+<div class="container my-5">
+  <h2 class="mb-4 text-center text-primary">Data Binding Angular</h2>
+
+  <div class="row">
+    <!-- Colonne Gauche -->
+    <div class="col-md-6">
+      <!-- Partie 1 : Interpolation -->
+      <div class="p-4 border rounded shadow-sm bg-light mb-4">
+        <h4 class="mb-3">1. Interpolation</h4>
+        <p><strong>First Name :</strong> {{ firstName }}</p>
+        <p><strong>Année :</strong> {{ annee }}</p>
+        <p>
+          <strong>Statut actif :</strong> 
+          <span [class.text-success]="isActive" [class.text-danger]="!isActive">{{ isActive }}</span>
+        </p>
+        <p><strong>Date actuelle :</strong> {{ currentDate | date: 'fullDate' }}</p>
+      </div>
+
+      <!-- Bouton -->
+      <div class="mb-3">
+        <button class="btn btn-success w-100" (click)="showWelcomeMessage()">Show alert</button>
+      </div>
+    </div>
+
+    <!-- Colonne Droite -->
+    <div class="col-md-6">
+      <!-- Partie 2 : Property Binding -->
+      <div class="p-4 border rounded shadow-sm bg-light mb-4">
+        <h4 class="mb-3">2. Property Binding</h4>
+
+        <div class="mb-3">
+          <label for="inputName" class="form-label">Nom</label>
+          <input id="inputName" type="text" class="form-control" [value]="firstName" readonly>
+        </div>
+
+        <div class="mb-3">
+          <label for="inputPlaceholder" class="form-label">Placeholder</label>
+          <input id="inputPlaceholder" type="text" class="form-control" [placeholder]="myPlaceHolder">
+        </div>
+
+        <div [class]="divClassName" 
+             style="height: 100px; width: 100%; display:flex; align-items:center; justify-content:center; border-radius: 8px;">
+          Salut
+        </div>
+      </div>
+
+      <!-- Select -->
+      <div class="mb-3">
+        <label for="citySelect" class="form-label">Select City</label>
+        <select id="citySelect" class="form-select" (change)="onCityChange()">
+          <option value="Tunis">Tunis</option>
+          <option value="Nabeul">Nabeul</option>
+          <option value="Beja">Beja</option>
+          <option value="Touzeur">Touzeur</option>
+        </select>
+      </div>
+
+      <!-- Input avec ngModel -->
+      <div>
+        <label for="ngModelInput" class="form-label">Edit Name (Two-way Binding)</label>
+        <input id="ngModelInput" type="text" class="form-control" [(ngModel)]="firstName" placeholder="Entrez votre prénom">
+      </div>
+    </div>
+  </div>
+</div>
